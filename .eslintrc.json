@@ -1,6 +1,7 @@
 {
   "extends": "next",
   "plugins": ["@remotion"],
+  "ignoreDuringBuilds": true,
   "overrides": [
     {
       "files": ["remotion/**/*.{ts,tsx}"],

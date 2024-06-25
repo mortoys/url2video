@@ -6,8 +6,8 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Main } from "../remotion/MyComp/Main";
 import {
   CompositionProps,
-  defaultMyCompProps,
-  DURATION_IN_FRAMES,
+  // defaultMyCompProps,
+  // DURATION_IN_FRAMES,
   VIDEO_FPS,
   VIDEO_HEIGHT,
   VIDEO_WIDTH,
@@ -166,7 +166,12 @@ const Home: NextPage = () => {
       <div className="flex flex-col mt-8 border border-unfocused-border-color p-geist rounded-geist bg-background">
       {
         slides.map((slide) => 
-          <Section {...slide} key={slide.subtitle} />
+          <Section 
+            key={slide.subtitle}
+            image={slide.image}
+            subtitle={slide.subtitle}
+            duration={slide.duration}
+          />
         )
       }
       </div>

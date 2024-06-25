@@ -97,9 +97,9 @@ const { Buffer } = require('buffer');
  * @param {Blob} blob - 要转换的 Blob 对象
  * @returns {Promise<string>} - 解析为 Base64 字符串的 Promise
  */
-export function convertBlobToBase64(blob) {
+export function convertBlobToBase64(blob): Promise<string> {
   return new Promise((resolve, reject) => {
-    const chunks = [];
+    // const chunks = [];
 
     blob.arrayBuffer()
       .then((arrayBuffer) => {

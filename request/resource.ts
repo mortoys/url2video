@@ -1,4 +1,4 @@
-import { z } from "zod";
+// import { z } from "zod";
 // import type { RenderMediaOnLambdaOutput } from "@remotion/lambda/client";
 // import {
 //   ProgressRequest,
@@ -7,9 +7,9 @@ import { z } from "zod";
 // } from "../types/schema";
 // import { CompositionProps } from "../types/constants";
 
-import { ApiResponse } from "../helpers/api-response";
+// import { ApiResponse } from "../helpers/api-response";
 // import { convertBlobToBase64, getAudioDuration } from '../helpers/api-response'
-import { AudioResponse, ScriptionResponse } from "../../../../types/schema";
+import { AudioResponse, ScriptionResponse } from "../types/schema";
 
 const DOMAIN = 'https://dev.wisehood.ai'
 
@@ -17,7 +17,7 @@ export const makeGet = async <Res>(
   endpoint: string,
   params: Record<string, string> | undefined,
   // options: RequestInit
-): Promise<Res> => {
+): Promise<{ data: Res }> => {
   const url = endpoint + (params ? ('?' + new URLSearchParams(params).toString()) : '')
   console.log(url)
 
@@ -28,7 +28,7 @@ export const makeGet = async <Res>(
     cache: "force-cache",
     // ... options,
   });
-  const json = (await result.json()) as Res;
+  const json = (await result.json()) as { data: Res };
   // if (json.type === "error") {
   //   throw new Error(json.message);
   // }
@@ -41,7 +41,7 @@ export const makeGet = async <Res>(
 export const makePost = async <Res>(
   endpoint: string,
   body: unknown,
-): Promise<Res> => {
+): Promise<{ data: Res }> => {
   const result = await fetch(endpoint, {
     method: 'post',
     body: JSON.stringify(body),
@@ -49,7 +49,7 @@ export const makePost = async <Res>(
       "content-type": "application/json",
     },
   });
-  const json = (await result.json()) as Res;
+  const json = (await result.json()) as { data: Res };
   // if (json.type === "error") {
   //   throw new Error(json.message);
   // }

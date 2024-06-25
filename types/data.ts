@@ -34,20 +34,24 @@ const SlideBase = z.object({
       word_length: z.number(),
     })
   ),
-  audio: z.string()
+  audio: z.string(),
+
+  type: z.string(),
+  image: z.string(),
 });
 
-const BlankSlide = SlideBase.extend({
-  type: z.literal('blank'),
-});
+// const BlankSlide = SlideBase.extend({
+//   type: z.literal('blank'),
+// });
 
-const ImageSlide = SlideBase.extend({
-  type: z.literal('image'),
-  image: z.string().optional(),
+// const ImageSlide = SlideBase.extend({
+//   type: z.literal('image'),
+//   image: z.string().optional(),
+// });
 
-});
+// export const SlideSchema = z.union([BlankSlide, ImageSlide]);
 
-export const SlideSchema = z.union([BlankSlide, ImageSlide]);
+export const SlideSchema = SlideBase
 
-export type Slide = z.infer<typeof SlideSchema>
+export type Slide = z.infer<typeof SlideBase>
 

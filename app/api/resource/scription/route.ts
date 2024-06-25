@@ -23,14 +23,14 @@
 // } from "@remotion/lambda/client";
 // import { DISK, RAM, REGION, TIMEOUT } from "../../../../config.mjs";
 import { executeGetApi } from "../../../../helpers/api-response";
-import { AudioRequest, AudioResponse } from "../../../../types/schema";
+import { ScriptionRequest, ScriptionResponse } from "../../../../types/schema";
 
 // import { getDataFromUrlServer } from "../../../../request/resource";
-import { convertBlobToBase64, getAudioDuration } from '../../../../helpers/api-response'
+// import { convertBlobToBase64, getAudioDuration } from '../../../../helpers/api-response'
 
-export const GET = executeGetApi<AudioResponse, typeof AudioRequest>(
-  AudioRequest,
-  async (req, { voice, text }) => {
+export const GET = executeGetApi<ScriptionResponse, typeof ScriptionRequest>(
+  ScriptionRequest,
+  async (req, { text }) => {
     const token = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0MjA4LCJyZWdpc3Rlcl90eXBlIjoicGhvbmUiLCJhcHBfbmFtZSI6IkNoaXRDaGF0X0Nocm9tZV9FeHQiLCJ0b2tlbl9pZCI6ImQ0YTMwMzEzLWIzZGItNGMwMS04NjE5LWZlY2VkNTZjYjI1OSIsImlzcyI6ImRldi53aXNlaG9vZC5haSIsImF1ZCI6WyIiXSwiZXhwIjoxNzMxOTEyNjcyLCJuYmYiOjE3MDA4MDg2NzIsImlhdCI6MTcwMDgwODY3Mn0.afG45v6_oYxIHLGSNTl7fmWSe8c4FsH3-rm3oTBjJco`;
 
     var speechHeaders = new Headers();

@@ -41,6 +41,10 @@ export const AudioRequest = z.object({
 
 export type AudioResponse = string
 
+export const ScriptionRequest = z.object({
+  // voice: z.string(),
+  text: z.string(),
+});
 export type ScriptionResponse = Array<{
   audio_offset: number
   duration: number

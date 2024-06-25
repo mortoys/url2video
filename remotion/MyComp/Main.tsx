@@ -1,27 +1,27 @@
 import { z } from "zod";
 import {
   AbsoluteFill,
-  Sequence,
+  // Sequence,
   spring,
   useCurrentFrame,
   useVideoConfig,
   interpolate
 } from "remotion";
 import { CompositionProps } from "../../types/constants";
-import { NextLogo } from "./NextLogo";
-import { loadFont, fontFamily } from "@remotion/google-fonts/Inter";
+// import { NextLogo } from "./NextLogo";
+// import { loadFont, fontFamily } from "@remotion/google-fonts/Inter";
 import React from "react";
-import { Rings } from "./Rings";
-import { TextFade } from "./TextFade";
+// import { Rings } from "./Rings";
+// import { TextFade } from "./TextFade";
 
-import { Audio, Img, staticFile } from "remotion";
+import { Audio, Img } from "remotion";
 
 import { linearTiming, TransitionSeries } from "@remotion/transitions";
 import { slide } from "@remotion/transitions/slide";
 import { fade } from "@remotion/transitions/fade";
 import { flip } from "@remotion/transitions/flip";
 
-loadFont();
+// loadFont();
 
 const Subtitle = ({ text, text_offset, word_length }) => {
   const safeTextOffset = Math.min(text_offset, text.length);
@@ -87,7 +87,7 @@ const ImageShift = ({ src, fps, durationInFrames }) => {
 };
 
 export const Main = ({ slides }: z.infer<typeof CompositionProps>) => {
-  const frame = useCurrentFrame();
+  // const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
   // const transitionStart = 2 * fps;

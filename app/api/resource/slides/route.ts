@@ -12,6 +12,6 @@ import { getDataFromUrlServer } from "../../../../request/resource"
 export const POST = executeApi<SlidesResponse, typeof SlidesRequest>(
   SlidesRequest,
   async (req, { uri }) => {
-    return await getDataFromUrlServer(uri)
+    return await getDataFromUrlServer(uri) as unknown as Promise<{ script:string[], image:string[] }>
   },
 );

@@ -8,7 +8,7 @@ import { executeGetApi } from "../../../../helpers/api-response";
 import { AudioRequest, AudioResponse } from "../../../../types/schema";
 
 // import { getDataFromUrlServer } from "../../../../request/resource";
-import { convertBlobToBase64, getAudioDuration } from '../../../../helpers/api-response'
+import { convertBlobToBase64 } from '../../../../helpers/api-response'
 
 export const GET = executeGetApi<AudioResponse, typeof AudioRequest>(
   AudioRequest,
