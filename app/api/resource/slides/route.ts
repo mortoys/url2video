@@ -1,3 +1,5 @@
+export const maxDuration = 20;
+
 // import {
 //   speculateFunctionName,
 //   AwsRegion,
