@@ -21,8 +21,8 @@ importers:
         specifier: 4.0.175
         version: 4.0.175(@aws-sdk/client-sso-oidc@3.583.0)(@remotion/bundler@4.0.175(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@remotion/media-utils':
-        specifier: ^4.0.176
-        version: 4.0.176(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 4.0.175
+        version: 4.0.175(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@remotion/paths':
         specifier: 4.0.175
         version: 4.0.175
@@ -881,12 +881,6 @@ packages:
 
   '@remotion/media-utils@4.0.175':
     resolution: {integrity: sha512-08Kce1QeNOe49cJW4nz3q1apEYNOTcq0XtHjWG3nz6vyh+iTFqp/sYEkhXKCjcOzOWqhQGNhhIkbf+cIRV5/GA==}
-    peerDependencies:
-      react: '>=16.8.0'
-      react-dom: '>=16.8.0'
-
-  '@remotion/media-utils@4.0.176':
-    resolution: {integrity: sha512-sk7rDYGwiSCEHi/zAFVR7TLbuIThHauTzFN7Bu4matS3cyIPCsFjSInOHLU/1h5eviKcCOmRkNW9fWC4re1X7w==}
     peerDependencies:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
@@ -2885,12 +2879,6 @@ packages:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
 
-  remotion@4.0.176:
-    resolution: {integrity: sha512-KYllh+crb83AMb703UjyDqx3zoZIOephD84Npkg/ojUIXulWRtoDKNJHB0OLG/JkItg0asdxHCm4nMqgy/iX9w==}
-    peerDependencies:
-      react: '>=16.8.0'
-      react-dom: '>=16.8.0'
-
   resolve-from@4.0.0:
     resolution: {integrity: sha512-pb/MYmXstAkysRFx8piNI1tGFNQIFA3vkE3Gq4EuA1dF6gHp/+vgZqsCGJapvy8N3Q+4o7FwvquPJcnZ7RYy4g==}
     engines: {node: '>=4'}
@@ -4770,12 +4758,6 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       remotion: 4.0.175(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-
-  '@remotion/media-utils@4.0.176(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
-    dependencies:
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-      remotion: 4.0.176(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
 
   '@remotion/paths@4.0.175': {}
 
@@ -7253,11 +7235,6 @@ snapshots:
       set-function-name: 2.0.2
 
   remotion@4.0.175(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
-    dependencies:
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-
-  remotion@4.0.176(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
