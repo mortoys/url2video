@@ -31,6 +31,8 @@ export const GET = executeGetApi<AudioResponse, typeof AudioRequest>(
       scene_id: "https://pkg.go.dev/database/sqll",
     });
 
+    // console.log(raw)
+
     // try {
     const response = await fetch(
       "https://dev.wisehood.ai/api/v1/audio/speech",
@@ -42,6 +44,8 @@ export const GET = executeGetApi<AudioResponse, typeof AudioRequest>(
         // mode: "cors",
       }
     );
+
+    // console.log(response.statusText)
 
     if (!response.ok) {
       throw new Error("Network response was not ok");

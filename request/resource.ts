@@ -16,6 +16,7 @@ const DOMAIN = 'https://dev.wisehood.ai'
 export const makeGet = async <Res>(
   endpoint: string,
   params: Record<string, string> | undefined,
+  cache?: boolean,
   // options: RequestInit
 ): Promise<{ data: Res }> => {
   const url = endpoint + (params ? ('?' + new URLSearchParams(params).toString()) : '')
@@ -25,7 +26,7 @@ export const makeGet = async <Res>(
   {
     method: 'get',
     mode: "cors",
-    cache: "force-cache",
+    cache: cache ? "force-cache" : 'default',
     // ... options,
   });
   const json = (await result.json()) as { data: Res };
@@ -62,11 +63,11 @@ export const makePost = async <Res>(
 export const getDataFromUrlServer = async (url: string) => {
   return makeGet<{ script:string[], image:string[] }>(DOMAIN + "/gchat/get_script", {
     uri: url
-  });
+  }, true);
 }
 
 export const getDataFromUrlClient = async (url: string) => {
-  return makePost<{ script:string[], image:string[] }>("/api/resource/slides", {
+  return makeGet<{ script:string[], image:string[] }>("/api/resource/slides", {
     uri: url
   });
 }
@@ -81,5 +82,5 @@ export const getAudio = async (text: string) => {
 export const getScription = async (text: string) => {
   return makeGet<ScriptionResponse>("/api/resource/scription", {
     text: text
-  })
+  }, true)
 }
