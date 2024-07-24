@@ -80,7 +80,7 @@ const Home: NextPage = () => {
         duration: 10,
         subtitle: subtitle,
         boundaries: [],
-        transitions: 'fade',
+        transition: 'fade',
         audio: undefined,
         image: image[i]
       })))

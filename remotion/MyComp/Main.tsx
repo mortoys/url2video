@@ -10,7 +10,7 @@ import {
 import { CompositionProps } from "../../types/constants";
 // import { NextLogo } from "./NextLogo";
 // import { loadFont, fontFamily } from "@remotion/google-fonts/Inter";
-import React from "react";
+import React, { useEffect, useMemo } from "react";
 // import { Rings } from "./Rings";
 // import { TextFade } from "./TextFade";
 
@@ -103,29 +103,70 @@ export const Main = ({ slides }: z.infer<typeof CompositionProps>) => {
   //   delay: transitionStart,
   // });
 
+  // const boundaries = useMemo(() => {
+
+  // }, slides)
+
+  const splitBoundaries = boundaries => {
+    let word_length = 0
+    const result = [{
+      duration: 0,
+      subtitle: '',
+      groups: [],
+      word_length
+    }]
+
+    for (let i = 0;i < boundaries.length;i++) {
+      if ([',','.','，','。','?','!','？','！'].includes(boundaries[i].text)) {
+        const lastItem = result[result.length - 1]
+        lastItem.duration = lastItem.groups.reduce((acc, item) => acc + item.duration, 0)
+        lastItem.subtitle = lastItem.groups.reduce((acc, item) => acc + item.text, '')
+        lastItem.word_length = word_length
+        word_length += lastItem.groups.reduce((acc, item) => acc + item.word_length, 1)
+
+        result.push({
+          duration: 0,
+          subtitle: '',
+          groups: [],
+          word_length
+        })
+        continue
+      }
+
+      result[result.length - 1].groups.push(boundaries[i])
+    }
+
+    // console.log(result)
+
+    return result.filter(item => item.groups.length)
+  }
+
   return (
     <AbsoluteFill className="bg-white">
       <TransitionSeries>{
         slides.map(
-            ({ duration, image, boundaries, subtitle, audio }, index) => 
+            ({ duration, image, boundaries, audio }, index) => 
             <>
               <TransitionSeries.Sequence durationInFrames={fps*duration} key={duration * index}>
                 <ImageShift src={image} fps={fps} durationInFrames={fps*duration} />
                 <TransitionSeries>
                 {
-                  boundaries && boundaries
+                  boundaries && splitBoundaries(boundaries)
                     // .filter(boundary => boundary.duration > 100)
                     // from={boundary.audio_offset / 1000 * fps}
-                    .map((boundary, index) => 
-                    <TransitionSeries.Sequence
-                      durationInFrames={(boundary.duration/1000 || 0.0001) * fps}
-                      key={boundary.text + index}>
-                      <Subtitle
-                        text={subtitle}
-                        text_offset={boundary.text_offset}
-                        word_length={boundary.word_length} />
-                    </TransitionSeries.Sequence>
-                  )
+                    .map(
+                      ({ duration, subtitle, groups, word_length }, index) => 
+                        groups.map((boundary, index2) => 
+                          <TransitionSeries.Sequence
+                            durationInFrames={(boundary.duration/1000 || 0.0001) * fps}
+                            key={boundary.text + index*index2}>
+                            <Subtitle
+                              text={subtitle}
+                              text_offset={boundary.text_offset - word_length}
+                              word_length={boundary.word_length} />
+                          </TransitionSeries.Sequence>
+                        )
+                    )
                 }
                 </TransitionSeries>
                 {/* <Subtitle text={subtitle} /> */}

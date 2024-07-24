@@ -3,7 +3,7 @@
 
 // interface SlideBase {
 //   duration: number
-//   transitions: 'fade' | 'slide' | 'wipe' | 'flip' | 'clockWipe' | 'cube'
+//   transition: 'fade' | 'slide' | 'wipe' | 'flip' | 'clockWipe' | 'cube'
 //   subtitle: string
 // }
 
@@ -23,7 +23,7 @@ import { z } from 'zod';
 
 const SlideBase = z.object({
   duration: z.number(),
-  transitions: z.enum(['fade', 'slide', 'wipe', 'flip', 'clockWipe', 'cube']),
+  transition: z.enum(['fade', 'slide', 'wipe', 'flip', 'clockWipe', 'cube']),
   subtitle: z.string(),
   boundaries: z.array(
     z.object({
